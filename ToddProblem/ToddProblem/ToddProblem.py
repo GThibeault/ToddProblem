@@ -4,12 +4,15 @@ from RankingMatrixPreprocessor import *
 from MarkovianPriorityMatcher import *
 from numpy import array
 
-rankingMatrix = [[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]
 
-processedRankingMatrix = RankingMatrixPreprocessor.preprocess(rankingMatrix)
-markov = RankingMatrixMarkovizer.markovize(processedRankingMatrix)
-eigenvector = StationaryState.getStationaryState(markov)
+class ToddProblemSolver(object):
+    def solve(self, rankingMatrix):
+        processedRankingMatrix = RankingMatrixPreprocessor.preprocess(
+            rankingMatrix)
+        markov = RankingMatrixMarkovizer.markovize(processedRankingMatrix)
+        eigenvector = StationaryState.getStationaryState(markov)
 
-pairs = MarkovianPriorityMatcher.match(processedRankingMatrix, eigenvector)
+        pairs = MarkovianPriorityMatcher.match(
+            processedRankingMatrix, eigenvector)
 
-print(pairs)
+        return pairs
