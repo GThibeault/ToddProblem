@@ -1,13 +1,15 @@
 from StationaryState import *
 from RankingMatrixMarkovizer import *
 from RankingMatrixPreprocessor import *
+from MarkovianPriorityMatcher import *
 from numpy import array
 
-rankingMatrix = [[1, 2], [1, 2], [1, 2]]
-rankingMatrix = RankingMatrixPreprocessor.preprocess(rankingMatrix)
+rankingMatrix = [[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]
 
-markov = RankingMatrixMarkovizer.markovize(rankingMatrix)
-
+processedRankingMatrix = RankingMatrixPreprocessor.preprocess(rankingMatrix)
+markov = RankingMatrixMarkovizer.markovize(processedRankingMatrix)
 eigenvector = StationaryState.getStationaryState(markov)
 
-print(eigenvector)
+pairs = MarkovianPriorityMatcher.match(processedRankingMatrix, eigenvector)
+
+print(pairs)
