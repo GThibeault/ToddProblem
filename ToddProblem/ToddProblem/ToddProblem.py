@@ -1,5 +1,10 @@
-from StationaryState import StationaryState
+from StationaryState import *
+from RankingMatrixMarkovizer import *
+from numpy import array
 
-markov = [[.6, .1, .2], [.1, .7, .2], [.3, .2, .6]]
+rankingMatrix = [[1, 2], [1, 2], [1, 2]]
+markov = RankingMatrixMarkovizer.markovize(rankingMatrix)
 
-StationaryState.getStationaryState(markov)
+eigenvector = StationaryState.getStationaryState(markov)
+
+print(eigenvector)
