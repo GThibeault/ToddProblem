@@ -1,6 +1,6 @@
 class MarkovianMatcherBase(object):
 
-    def match(self, rankingMatrix, stationaryState):
+    def execute(self, rankingMatrix, stationaryState):
         rankedStationary = sorted(
             enumerate(stationaryState), key=lambda s: s[1], reverse=True)
 

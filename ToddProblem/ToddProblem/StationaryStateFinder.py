@@ -1,11 +1,9 @@
 from numpy.linalg import eig
+from Constants import Constants
 
 
-class StationaryState(object):
-
-    epsilon = 0.0005
-
-    def getStationaryState(self, matrix):
+class StationaryStateFinder(object):
+    def execute(self, matrix):
         results = eig(matrix)
 
         eigenIndex = self.__getStationaryEigenvalueIndex(results)
@@ -19,7 +17,7 @@ class StationaryState(object):
         index, difference = min(
             ((i, abs(x - 1)) for i, x in enumerate(results[0])), key=lambda z: z[1])
 
-        if difference > self.epsilon:
+        if difference > Constants.epsilon:
             raise ValueError(
                 f"No unit eigenvalue found. Closest match at index {index}, difference: {difference}.")
         else:

@@ -3,7 +3,7 @@ from numpy import transpose
 
 class RankingMatrixMarkovizer(object):
 
-    def markovize(self, rankingMatrix):
+    def execute(self, rankingMatrix):
         groupSize = len(rankingMatrix)
         rankingSum = sum(range(groupSize))
 

@@ -1,6 +1,6 @@
 class RankingMatrixPreprocessor(object):
 
-    def preprocess(self, rankingMatrix):
+    def execute(self, rankingMatrix):
         for i, rankingList in enumerate(rankingMatrix):
             rankingList.insert(i, 0)
 
