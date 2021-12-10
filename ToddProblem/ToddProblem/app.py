@@ -1,15 +1,17 @@
 from flask import Flask, request
-from ToddProblem import ToddProblemSolver
+from SolverBuilder import *
 
 app = Flask(__name__)
 app.run(debug=True, use_debugger=False, use_reloader=False)
 
 
-@app.route("/markov-test", methods=["GET"])
-def markovTest():
+@app.route("/match", methods=["GET"])
+def match():
     rankingMatrix = request.json["ranking"]
+    config = request.json["config"]
 
-    solver = ToddProblemSolver()
+    builder = SolverBuilder()
+    solver = builder.build(config)
     pairs = solver.solve(rankingMatrix)
 
     return {"result": pairs}
