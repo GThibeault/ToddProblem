@@ -4,8 +4,6 @@ class MarkovianPriorityMatcher(object):
         rankedStationary = sorted(
             enumerate(stationaryState), key=lambda s: s[1], reverse=True)
 
-        print(rankedStationary)
-
         pairs = []
         taken = {i: False for i in self.__getRankingRange(rankingMatrix)}
 
