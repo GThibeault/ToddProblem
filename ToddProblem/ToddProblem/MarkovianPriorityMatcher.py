@@ -1,14 +1,13 @@
 class MarkovianPriorityMatcher(object):
 
-    @classmethod
-    def match(cls, rankingMatrix, stationaryState):
+    def match(self, rankingMatrix, stationaryState):
         rankedStationary = sorted(
             enumerate(stationaryState), key=lambda s: s[1], reverse=True)
 
         print(rankedStationary)
 
         pairs = []
-        taken = {i: False for i in cls.__getRankingRange(rankingMatrix)}
+        taken = {i: False for i in self.__getRankingRange(rankingMatrix)}
 
         for index, weight in rankedStationary:
             if taken[index]:
@@ -18,7 +17,7 @@ class MarkovianPriorityMatcher(object):
                 enumerate(rankingMatrix[index]), key=lambda s: s[1] if s[0] != index else len(rankingMatrix), reverse=False)
 
             firstAvailable = next(
-                filter(lambda p: cls.__isAvailable(p, taken), rankedPreference))[0]
+                filter(lambda p: self.__isAvailable(p, taken), rankedPreference))[0]
 
             taken[index] = True
             taken[firstAvailable] = True
@@ -27,12 +26,10 @@ class MarkovianPriorityMatcher(object):
 
         return pairs
 
-    @classmethod
-    def __getRankingRange(cls, rankingMatrix):
+    def __getRankingRange(self, rankingMatrix):
         return range(len(rankingMatrix))
 
-    @classmethod
-    def __isAvailable(cls, preference, taken):
+    def __isAvailable(self, preference, taken):
         prefIndex, prefRanking = preference
 
         return not taken[prefIndex]
