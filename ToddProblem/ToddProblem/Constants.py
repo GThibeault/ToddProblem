@@ -9,3 +9,4 @@ class Constants(object):
     matcher = "matcher"
     markov = "markov"
     priority = "priority"
+    balanced = "balanced"
