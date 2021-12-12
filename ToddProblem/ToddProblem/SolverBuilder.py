@@ -1,4 +1,6 @@
-from MarkovianBalancedMatcher import MarkovianBalancedMatcher
+from MarkovianBalancedMatcher import *
+from MarkovianWeightedMatcher import *
+from RankingMatrixReverser import RankingMatrixReverser
 from Solver import Solver
 from StationaryStateFinder import *
 from RankingMatrixMarkovizer import *
@@ -19,7 +21,8 @@ class SolverBuilder(object):
 
     def __buildPreprocessors(self, config):
         decisionDict = {
-            Constants.markov: lambda: [RankingMatrixPreprocessor()]
+            Constants.markov: lambda: [
+                RankingMatrixPreprocessor(), RankingMatrixReverser()]
         }
 
         return self.__build(config, Constants.preprocessor, decisionDict, [])
@@ -36,6 +39,7 @@ class SolverBuilder(object):
         decisionDict = {
             Constants.priority: lambda: MarkovianPriorityMatcher(),
             Constants.balanced: lambda: MarkovianBalancedMatcher(),
+            Constants.weighted: lambda: MarkovianWeightedMatcher(),
         }
 
         return self.__build(config, Constants.matcher, decisionDict, None)
