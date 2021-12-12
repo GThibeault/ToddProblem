@@ -1,7 +1,7 @@
-from MarkovianMatcherBase import MarkovianMatcherBase
+from MatcherBase import MatcherBase
 
 
-class MarkovianBalancedMatcher(MarkovianMatcherBase):
+class BalancedMatcher(MatcherBase):
     def match_pair(self, taken, index, rankingMatrix, weights):
         rankedWeights = self.getIterFromWeights(weights)
         reciprocalIndex = rankedWeights[-1-index][0]

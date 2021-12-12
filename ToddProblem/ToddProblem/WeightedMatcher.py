@@ -1,7 +1,7 @@
-from MarkovianMatcherBase import MarkovianMatcherBase
+from MatcherBase import MatcherBase
 
 
-class MarkovianWeightedMatcher(MarkovianMatcherBase):
+class WeightedMatcher(MatcherBase):
     def match_pair(self, taken, index, rankingMatrix, weights):
         availableRanking = [(i, r) for i, r in enumerate(
             rankingMatrix[index]) if not taken[i]]

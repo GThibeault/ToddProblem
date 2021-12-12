@@ -1,4 +1,4 @@
-class MarkovianMatcherBase(object):
+class MatcherBase(object):
 
     def execute(self, rankingMatrix, weights):
         pairs = []

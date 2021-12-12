@@ -1,7 +1,7 @@
-from MarkovianMatcherBase import MarkovianMatcherBase
+from MatcherBase import MatcherBase
 
 
-class MarkovianPriorityMatcher(MarkovianMatcherBase):
+class PriorityMatcher(MatcherBase):
     def match_pair(self, taken, index, rankingMatrix, weights):
         firstAvailable = max(((i, x) for i, x in enumerate(
             rankingMatrix[index]) if not taken[i]), key=lambda p: p[1])
