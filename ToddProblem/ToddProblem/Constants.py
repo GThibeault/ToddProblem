@@ -10,3 +10,4 @@ class Constants(object):
     markov = "markov"
     priority = "priority"
     balanced = "balanced"
+    weighted = "weighted"
