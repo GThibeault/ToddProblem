@@ -2,8 +2,9 @@ from MarkovianMatcherBase import MarkovianMatcherBase
 
 
 class MarkovianBalancedMatcher(MarkovianMatcherBase):
-    def match_pair(self, taken, index, rankedPreferenceMatrix, rankedStationary):
-        reciprocalIndex = rankedStationary[-1-index][0]
+    def match_pair(self, taken, index, rankingMatrix, weights):
+        rankedWeights = self.getIterFromWeights(weights)
+        reciprocalIndex = rankedWeights[-1-index][0]
 
         if taken[reciprocalIndex]:
             raise ValueError(

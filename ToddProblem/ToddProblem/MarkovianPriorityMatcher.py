@@ -2,8 +2,8 @@ from MarkovianMatcherBase import MarkovianMatcherBase
 
 
 class MarkovianPriorityMatcher(MarkovianMatcherBase):
-    def match_pair(self, taken, index, rankedPreferenceMatrix, rankedStationary):
-        nextAvailable = next(
-            filter(lambda p: not taken[p[0]], rankedPreferenceMatrix[index]))
+    def match_pair(self, taken, index, rankingMatrix, weights):
+        firstAvailable = max(((i, x) for i, x in enumerate(
+            rankingMatrix[index]) if not taken[i]), key=lambda p: p[1])
 
-        return nextAvailable[0]
+        return firstAvailable[0]

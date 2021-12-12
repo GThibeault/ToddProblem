@@ -1,21 +1,16 @@
 class MarkovianMatcherBase(object):
 
-    def execute(self, rankingMatrix, stationaryState):
-        rankedStationary = sorted(
-            enumerate(stationaryState), key=lambda s: s[1], reverse=True)
-
-        rankedPreferenceMatrix = map(lambda i: self.__getRankedPreferences(
-            rankingMatrix, i), range(len(rankingMatrix)))
-
+    def execute(self, rankingMatrix, weights):
         pairs = []
         taken = {i: False for i in range(len(rankingMatrix))}
+        self.getIterFromWeights(weights)
 
-        for index, weight in self.__getIterFromRanking(rankedStationary):
+        for index, weight in self.getIterFromWeights(weights):
             if taken[index]:
                 continue
 
             matched = self.match_pair(
-                taken, index, rankedPreferenceMatrix, rankedStationary)
+                taken, index, rankingMatrix, weights)
 
             taken[index] = True
             taken[matched] = True
@@ -24,9 +19,6 @@ class MarkovianMatcherBase(object):
 
         return pairs
 
-    def __getIterFromRanking(self, ranking):
-        return ranking
-
-    def __getRankedPreferences(self, rankingMatrix, index):
+    def getIterFromWeights(self, weights):
         return sorted(
-            enumerate(rankingMatrix[index]), key=lambda s: s[1] if s[0] != index else len(rankingMatrix), reverse=False)
+            enumerate(weights), key=lambda s: s[1], reverse=True)
