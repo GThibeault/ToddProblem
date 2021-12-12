@@ -8,6 +8,7 @@ class Constants(object):
     weighter = "weighter"
     matcher = "matcher"
     markov = "markov"
+    flat = "flat"
     priority = "priority"
     balanced = "balanced"
     weighted = "weighted"

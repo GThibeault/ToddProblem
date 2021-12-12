@@ -1,4 +1,5 @@
 from BalancedMatcher import *
+from FlatWeighter import *
 from WeightedMatcher import *
 from RankingMatrixReverser import *
 from Solver import Solver
@@ -6,7 +7,7 @@ from StationaryStateFinder import *
 from RankingMatrixMarkovizer import *
 from RankingMatrixSquarer import *
 from PriorityMatcher import *
-from Constants import Constants
+from Constants import *
 
 
 class SolverBuilder(object):
@@ -34,7 +35,9 @@ class SolverBuilder(object):
     def __buildWeighters(self, config):
         decisionDict = {
             Constants.markov: lambda: [
-                RankingMatrixMarkovizer(), StationaryStateFinder()]
+                RankingMatrixMarkovizer(), StationaryStateFinder()],
+            Constants.flat: lambda: [
+                FlatWeighter()]
         }
 
         return self.__build(config, Constants.weighter, decisionDict, [])
