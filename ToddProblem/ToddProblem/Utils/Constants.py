@@ -1,6 +1,3 @@
-from typing import ClassVar
-
-
 class Constants(object):
 
     epsilon = 0.0005

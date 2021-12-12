@@ -1,5 +1,5 @@
 from flask import Flask, request
-from SolverBuilder import *
+from Solver.SolverBuilder import *
 
 app = Flask(__name__)
 app.run(debug=True, use_debugger=False, use_reloader=False)

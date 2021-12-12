@@ -1,4 +1,4 @@
-from MatcherBase import MatcherBase
+from Matchers.MatcherBase import MatcherBase
 
 
 class WeightedMatcher(MatcherBase):

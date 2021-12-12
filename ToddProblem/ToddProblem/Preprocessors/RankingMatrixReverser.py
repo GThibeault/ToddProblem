@@ -1,6 +1,3 @@
-from numpy import transpose
-
-
 class RankingMatrixReverser(object):
 
     def execute(self, rankingMatrix):

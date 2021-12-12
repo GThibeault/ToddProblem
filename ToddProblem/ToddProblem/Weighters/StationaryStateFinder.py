@@ -1,5 +1,5 @@
 from numpy.linalg import eig
-from Constants import Constants
+from Utils.Constants import Constants
 
 
 class StationaryStateFinder(object):

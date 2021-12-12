@@ -1,13 +1,13 @@
-from BalancedMatcher import *
-from FlatWeighter import *
-from WeightedMatcher import *
-from RankingMatrixReverser import *
-from Solver import Solver
-from StationaryStateFinder import *
-from RankingMatrixMarkovizer import *
-from RankingMatrixSquarer import *
-from PriorityMatcher import *
-from Constants import *
+from Matchers.BalancedMatcher import *
+from Weighters.FlatWeighter import *
+from Matchers.WeightedMatcher import *
+from Preprocessors.RankingMatrixReverser import *
+from Solver.Solver import Solver
+from Weighters.StationaryStateFinder import *
+from Weighters.RankingMatrixMarkovizer import *
+from Preprocessors.RankingMatrixSquarer import *
+from Matchers.PriorityMatcher import *
+from Utils.Constants import *
 
 
 class SolverBuilder(object):
