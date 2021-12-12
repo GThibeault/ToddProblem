@@ -1,4 +1,4 @@
-class RankingMatrixPreprocessor(object):
+class RankingMatrixSquarer(object):
 
     def execute(self, rankingMatrix):
         for i, rankingList in enumerate(rankingMatrix):

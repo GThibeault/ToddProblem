@@ -4,7 +4,7 @@ from RankingMatrixReverser import *
 from Solver import Solver
 from StationaryStateFinder import *
 from RankingMatrixMarkovizer import *
-from RankingMatrixPreprocessor import *
+from RankingMatrixSquarer import *
 from PriorityMatcher import *
 from Constants import Constants
 
@@ -20,9 +20,13 @@ class SolverBuilder(object):
         return solver
 
     def __buildPreprocessors(self, config):
+        if Constants.preprocessor not in config:
+            return [
+                RankingMatrixSquarer(), RankingMatrixReverser()]
+
         decisionDict = {
             Constants.markov: lambda: [
-                RankingMatrixPreprocessor(), RankingMatrixReverser()]
+                RankingMatrixSquarer(), RankingMatrixReverser()]
         }
 
         return self.__build(config, Constants.preprocessor, decisionDict, [])
