@@ -1,4 +1,5 @@
 from Matchers.BalancedMatcher import *
+from Preprocessors.RankingMatrixNormalizer import *
 from Weighters.FlatWeighter import *
 from Matchers.WeightedMatcher import *
 from Preprocessors.RankingMatrixReverser import *
@@ -21,13 +22,11 @@ class SolverBuilder(object):
         return solver
 
     def __buildPreprocessors(self, config):
-        if Constants.preprocessor not in config:
-            return [
-                RankingMatrixSquarer(), RankingMatrixReverser()]
-
         decisionDict = {
-            Constants.markov: lambda: [
-                RankingMatrixSquarer(), RankingMatrixReverser()]
+            Constants.ranking: lambda: [
+                RankingMatrixSquarer(), RankingMatrixReverser()],
+            Constants.normalizer: lambda: [
+                RankingMatrixSquarer(), RankingMatrixNormalizer()]
         }
 
         return self.__build(config, Constants.preprocessor, decisionDict, [])
