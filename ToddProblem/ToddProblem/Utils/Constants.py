@@ -4,6 +4,8 @@ class Constants(object):
     preprocessor = "preprocessor"
     weighter = "weighter"
     matcher = "matcher"
+    ranking = "ranking"
+    normalizer = "normalizer"
     markov = "markov"
     flat = "flat"
     priority = "priority"
