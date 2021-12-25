@@ -1,14 +1,20 @@
-from flask import Flask, request
+from typing import Any
+from fastapi import FastAPI
+from pydantic import BaseModel
 from Solver.SolverBuilder import *
 
-app = Flask(__name__)
-app.run(debug=True, use_debugger=False, use_reloader=False)
+app = FastAPI()
 
 
-@app.route("/match", methods=["GET"])
-def match():
-    rankingMatrix = request.json["ranking"]
-    config = request.json["config"]
+class MatchRequestBody(BaseModel):
+    ranking: Any
+    config: Any
+
+
+@app.get("/match")
+def match(body: MatchRequestBody):
+    rankingMatrix = body.ranking
+    config = body.config
 
     builder = SolverBuilder()
     solver = builder.build(config)
